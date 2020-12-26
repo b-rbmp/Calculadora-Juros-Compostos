@@ -26,7 +26,7 @@ def calculo_juros_compostos(montante_inicial, aportes_mensais, taxa_mensal, temp
     return capital_mensal
 
 # DEBUG
-if __name__ == "__main__":
-    calculo_juros_compostos(10, 10, 10, 10)
+# if __name__ == "__main__":
+#     calculo_juros_compostos(10, 10, 10, 10)
 
 
