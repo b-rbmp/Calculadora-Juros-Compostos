@@ -1,6 +1,6 @@
 import unittest
 import requests
-from dev.calculos import calculo_juros_compostos
+from application.calculos import calculo_juros_compostos
 
 class TestFlask(unittest.TestCase):
      def test_web_app_running(self):

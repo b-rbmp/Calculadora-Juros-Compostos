@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1 class="titulo"> Resultados </h1>
+    <div class="tabela-resultados">
+        <h2 class="resultado">Montante Inicial: {{montante_inicial}}</h2>
+        <h2 class="resultado">Total Aportado: {{total_aportado}}</h2>
+        <h2 class="resultado">O capital final sera: {{capital_final}}</h2>
+        <h2 class="resultado">Juros Acumulados: {{juros_acumulados}}</h2>
+    </div>
+{% endblock %}

@@ -1,21 +1,21 @@
-from flask import Flask
+"""Flask configuration."""
+from os import environ, path
+from dotenv import load_dotenv
 
-# Bibliotecas publicamente acessíveis
-#db = SQLAlchemy()
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
 
-def init_app():
-    # Inicializa a aplicação
-    app = Flask(__name__, instance_relative_config=False)
-    app.config.from_object('config.Config')
 
-    # Inicializa Plugins
-    #db.init_app(app)
+class Config:
+    """Base config."""
+    FLASK_APP = 'wsgi.py'
+    
+    SECRET_KEY = environ.get('SECRET_KEY')
+    #SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME')
+    STATIC_FOLDER = 'static'
+    TEMPLATES_FOLDER = 'templates'
 
-    with app.app_context():
-        # Inclui as routes
-        from . import routes
-
-        # Registra blueprints
-        #app.register_blueprint(auth.auth_bp)
-
-        return app
+class DevConfig(Config):
+    FLASK_ENV = 'development'
+    DEBUG = True
+    TESTING = True
