@@ -2,58 +2,81 @@
 
 {% block content %}
     <div class="formwrapper">
-        <h2 class="title">Calculadora de Juros Compostos</h2>
+        <h1 class="form-title">Calculadora de Juros Compostos</h1>
         <form method="POST" action="/">
             {{ form.csrf_token }}
-            <fieldset class="form-field">
-            {{ form.montante_inicial.label }}
-            {{ form.montante_inicial }}
-                {% if form.montante_inicial.errors %}
-                <ul class="errors">
-                {% for error in form.montante_inicial.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
-            </fieldset>
-
-            <fieldset class="form-field">
-                {{ form.aportes_mensais.label }}
-                {{ form.aportes_mensais }}
-                {% if form.aportes_mensais.errors %}
-                <ul class="errors">
-                    {% for error in form.aportes_mensais.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </fieldset>
-
-            <fieldset class="form-field">
-                {{ form.taxa_mensal.label }}
-                {{ form.taxa_mensal }}
-                {% if form.taxa_mensal.errors %}
-                <ul class="errors">
-                    {% for error in form.taxa_mensal.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </fieldset>
-
-            <fieldset class="form-field">
-                {{ form.tempo_meses.label }}
-                {{ form.tempo_meses }}
-                {% if form.tempo_meses.errors %}
-                <ul class="errors">
-                    {% for error in form.tempo_meses.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </fieldset>
+            <ul>
+                <li>
+                    <fieldset class="field-align-left">
+                        <div class="field-label">
+                            {{ form.montante_inicial.label }}
+                        </div>
+                        <div class="fieldcontainer">
+                            <span class="input-left-addon" id="reaisaddon1">R$</span>
+                            <span class="field-style">{{ form.montante_inicial }}</span>
+                                {% if form.montante_inicial.errors %}
+                                <ul class="errors">
+                                {% for error in form.montante_inicial.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                                </ul>
+                                {% endif %}
+                        </div>
+                    </fieldset>
+                    <fieldset class="field-align-right">
+                        <div class="field-label">
+                            {{ form.aportes_mensais.label }}
+                        </div>
+                        <div class="fieldcontainer">
+                            <span class="input-left-addon" id="reaisaddon2">R$</span>
+                            <span class="field-style"> {{ form.aportes_mensais }}</span>
+                                {% if form.aportes_mensais.errors %}
+                                <ul class="errors">
+                                    {% for error in form.aportes_mensais.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                        </div>
+                    </fieldset>
+                </li>
+                <li>
+                    <fieldset class="field-align-left">
+                        <div class="field-label">
+                            {{ form.taxa_mensal.label }}
+                        </div>
+                        <div class="fieldcontainer">
+                            <span class="input-left-addon" id="taxaaddon">%</span>
+                            <span class="field-style">{{ form.taxa_mensal }}</span>
+                            {% if form.taxa_mensal.errors %}
+                            <ul class="errors">
+                                {% for error in form.taxa_mensal.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <fieldset class="field-align-right">
+                        <div class="field-label">
+                            {{ form.tempo_meses.label }}
+                        </div>
+                        <div class="fieldcontainer">
+                            <span class="input-left-addon" id="mesesaddon">Meses</span>
+                            <span class="field-style">{{ form.tempo_meses }}</span>
+                            {% if form.tempo_meses.errors %}
+                            <ul class="errors">
+                                {% for error in form.tempo_meses.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                </li>
+            </ul>
             <div class="submit-button">
-            {{ form.submit }}
+                {{ form.submit }}
             </div>
         </form>
     </div>

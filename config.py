@@ -19,3 +19,4 @@ class DevConfig(Config):
     FLASK_ENV = 'development'
     DEBUG = True
     TESTING = True
+    TEMPLATES_AUTO_RELOAD = True
