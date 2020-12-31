@@ -1,5 +1,5 @@
 body {
-    background-color:rgba(199, 199, 199, 0.35);
+    background-color:rgba(199, 199, 199, 0.1) !important;
 }
 
 .form-title{
@@ -10,104 +10,19 @@ body {
     text-align: center;
 }
 
-.field-label{
-    color: rgba(87, 87, 87, 0.849);
-}
-
 .formwrapper{
     display: block;
-	max-width: 600px;
 	background: #FAFAFA;
-	padding: 30px;
-	margin: 50px auto;
-	box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
-	border-radius: 4%;
-	border: 6px solid #305A72;
+	margin: 100px auto;
 }
-.formwrapper ul{
-	padding:0;
-	margin:0;
-	list-style:none;
-}
-.formwrapper ul li{
-	display: block;
-	margin-bottom: 10px;
-	min-height: 35px;
+
+.resultswrapper{
+    display: block;
+    background: #FAFAFA;
+    margin: 100px auto
 }
 
 
-.fieldcontainer{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
 
-.input-left-addon{
-    min-width: 20%;
-    background-color: #17445E;
-    color: rgb(255, 255, 255);
-    font: 14px Arial, Helvetica, sans-serif;
-    padding: 8px 12px;
-    vertical-align: middle;
-    text-align: center;
-    border-top-left-radius: 15%;
-    border-bottom-left-radius: 15%;
-}
 
-.formwrapper ul li fieldset{
-    border-style: none;
-    width: 45%;
-}
-.formwrapper ul li input[type="text"]{
-	box-sizing: border-box; 
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box; 
-    padding: 8px;
-	outline: none;
-    border: 1px solid #B0CFE0;
-    width: auto;
-	-webkit-transition: all 0.30s ease-in-out;
-	-moz-transition: all 0.30s ease-in-out;
-	-ms-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;
-    border-top-right-radius: 6%;
-    border-bottom-right-radius: 6%;
 
-}
-.formwrapper ul li input[type="text"]:focus{
-	box-shadow: 0 0 5px #B0CFE0;
-    border:1px solid #B0CFE0;
-}
-
-.formwrapper ul li .field-align-left{
-	float:left;
-}
-.formwrapper ul li .field-align-right{
-	float:right;
-}
-
-.submit-button{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin-top: 70px;
-}
-.formwrapper div input[type="submit"] {
-	-moz-box-shadow: inset 0px 1px 0px 0px #3985B1;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #3985B1;
-	box-shadow: inset 0px 1px 0px 0px #3985B1;
-	background-color: #17445E;
-	border: 1px solid #17445E;
-	display: inline-block;
-	cursor: pointer;
-	color: #FFFFFF;
-	padding: 10px 18px;
-    text-decoration: none;
-    border-radius: 25px;
-    font: 14px Arial, Helvetica, sans-serif;
-    font-weight: 600;
-}
-.formwrapper div input[type="submit"]:hover {
-	background: linear-gradient(to bottom, #23668d 5%, #1e79ad 100%);
-	background-color:  #1e4f6ba6;
-}

@@ -1,32 +1,17 @@
-
-import numpy.matlib as ml
+import pandas as pd
 
 def calculo_juros_compostos(montante_inicial, aportes_mensais, taxa_mensal, tempo_meses): 
-  
+    
+    df = pd.DataFrame({'Capital' : [montante_inicial], 'Juros Mensais': [0.0], 'Juros Acumulados': [0.0], 'Valor Aportado' : [montante_inicial]})
     # Calcula juros compostos e guarda a evolução mês a mês do capital, juro mensal e juro acumulado
-    capital_mensal = ml.zeros((tempo_meses+1, 3))
-    capital_mensal[0, 0] = montante_inicial
     for i in range(1, tempo_meses+1):
+        df = df.append(pd.Series(0, index=df.columns), ignore_index=True)
         # Capital no mês subsequente
-        montante_atualizado = capital_mensal[i-1, 0] + aportes_mensais
-        capital_mensal[i, 0] = montante_atualizado*(1 + taxa_mensal/100)
-        capital_mensal[i, 1] = capital_mensal[i, 0]-montante_atualizado
-        capital_mensal[i, 2] = capital_mensal[i-1, 2]+capital_mensal[i, 1]
+        montante_atualizado = df['Capital'].loc[i-1] + aportes_mensais
+        df.at[i, 'Capital'] = montante_atualizado*(1.0 + taxa_mensal/100)
+        df.at[i, 'Juros Mensais'] = (df['Capital'].loc[i]-montante_atualizado)
+        df.at[i, 'Juros Acumulados'] = (df['Juros Acumulados'].loc[i-1] + df['Juros Mensais'].loc[i])
+        df.at[i, 'Valor Aportado'] = (df['Valor Aportado'].loc[i-1] + aportes_mensais)
 
-    # Dados a retornar: Somente capital_mensal
-    # capital_final = capital_mensal[i, 0]
-    # juros_mensal = capital_mensal[i, 1]
-    # juros_acumulados = capital_mensal[i, 2]
-    # print("O montante inicial é :", montante_inicial) 
-    # print("O montante final é :", capital_final) 
-    # print("O ganho em juros total é :", juros_acumulados) 
-    # print("O ganho em juros mensal é :", juros_mensal) 
-    # print("A quantidade aportada ao longo do tempo é: ", aportes_mensais*tempo_meses)
-    # print(capital_mensal)
-    return capital_mensal
-
-# DEBUG
-# if __name__ == "__main__":
-#     calculo_juros_compostos(10, 10, 10, 10)
-
+    return df
 

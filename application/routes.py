@@ -7,6 +7,8 @@ from flask import (
 )
 from .forms import CalcularForm
 from .calculos import calculo_juros_compostos
+from .plotly_wrapper import create_plot_calculos
+import pandas as pd
 
 @app.route("/", methods=['GET', 'POST'])
 def calcular():
@@ -33,12 +35,14 @@ def resultado():
         taxa_mensal=float(request.args['taxa']),
         tempo_meses=int(request.args['tempo'])
     )
+    plot = create_plot_calculos(round(capital_mensal, 2))
     return render_template(
         "resultado.html",
         montante_inicial=round(float(request.args['montante']), 2),
-        capital_final=round(capital_mensal[-1, 0], 2), 
-        juros_acumulados=round(capital_mensal[-1, 2], 2), 
-        total_aportado=round(int(request.args['tempo'])*float(request.args['aportes']), 2)
+        capital_final=round(capital_mensal['Capital'].iloc[-1], 2), 
+        juros_acumulados=round(capital_mensal['Juros Acumulados'].iloc[-1], 2), 
+        total_aportado=round(capital_mensal['Valor Aportado'].iloc[-1], 2),
+        plot=plot
     )
 
 @app.route("/favicon.ico")

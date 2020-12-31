@@ -1,35 +1,35 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <div class="formwrapper">
-        <h1 class="form-title">Calculadora de Juros Compostos</h1>
+    <div class="formwrapper container-fluid shadow-lg p-3 mb-5 w-50 bg-white rounded border border-success border-3 vertical-center">
+        <h1 class="fs-2 text-center mb-5 mt-2 text-success">Calculadora de Juros Compostos</h1>
         <form method="POST" action="/">
             {{ form.csrf_token }}
-            <ul>
-                <li>
-                    <fieldset class="field-align-left">
-                        <div class="field-label">
+            <div class="container">
+                <div class="row g-4 mb-4">
+                    <div class="col-6">
+                        <div class="form-label">
                             {{ form.montante_inicial.label }}
                         </div>
-                        <div class="fieldcontainer">
-                            <span class="input-left-addon" id="reaisaddon1">R$</span>
-                            <span class="field-style">{{ form.montante_inicial }}</span>
+                        <div class="input-group">
+                            <span class="input-group-text bg-success bg-gradient text-white" id="reaisaddon1">R$</span>
+                            {{ form.montante_inicial(class_="form-control") }}
                                 {% if form.montante_inicial.errors %}
                                 <ul class="errors">
-                                {% for error in form.montante_inicial.errors %}
-                                <li>{{ error }}</li>
-                                {% endfor %}
+                                    {% for error in form.montante_inicial.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
                                 </ul>
                                 {% endif %}
                         </div>
-                    </fieldset>
-                    <fieldset class="field-align-right">
-                        <div class="field-label">
+                    </div>
+                    <div class="col-6">
+                        <div class="form-label">
                             {{ form.aportes_mensais.label }}
                         </div>
-                        <div class="fieldcontainer">
-                            <span class="input-left-addon" id="reaisaddon2">R$</span>
-                            <span class="field-style"> {{ form.aportes_mensais }}</span>
+                        <div class="input-group">
+                            <span class="input-group-text bg-success bg-gradient text-white" id="reaisaddon2">R$</span>
+                            {{ form.aportes_mensais(class_="form-control") }}
                                 {% if form.aportes_mensais.errors %}
                                 <ul class="errors">
                                     {% for error in form.aportes_mensais.errors %}
@@ -38,46 +38,46 @@
                                 </ul>
                                 {% endif %}
                         </div>
-                    </fieldset>
-                </li>
-                <li>
-                    <fieldset class="field-align-left">
-                        <div class="field-label">
+                    </div>
+                    <div class="col-6">
+                        <div class="form-label">
                             {{ form.taxa_mensal.label }}
                         </div>
-                        <div class="fieldcontainer">
-                            <span class="input-left-addon" id="taxaaddon">%</span>
-                            <span class="field-style">{{ form.taxa_mensal }}</span>
-                            {% if form.taxa_mensal.errors %}
-                            <ul class="errors">
-                                {% for error in form.taxa_mensal.errors %}
-                                <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
+                        <div class="input-group">
+                            <span class="input-group-text bg-success bg-gradient text-white" id="taxamensal">% mensal</span>
+                            {{ form.taxa_mensal(class_="form-control") }}
+                                {% if form.taxa_mensal.errors %}
+                                <ul class="errors">
+                                    {% for error in form.taxa_mensal.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
                         </div>
-                    </fieldset>
-                    <fieldset class="field-align-right">
-                        <div class="field-label">
+                    </div>
+                    <div class="col-6">
+                        <div class="form-label">
                             {{ form.tempo_meses.label }}
                         </div>
-                        <div class="fieldcontainer">
-                            <span class="input-left-addon" id="mesesaddon">Meses</span>
-                            <span class="field-style">{{ form.tempo_meses }}</span>
-                            {% if form.tempo_meses.errors %}
-                            <ul class="errors">
-                                {% for error in form.tempo_meses.errors %}
-                                <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
+                        <div class="input-group">
+                            <span class="input-group-text bg-success bg-gradient text-white" id="tempomeses">Meses</span>
+                            {{ form.tempo_meses(class_="form-control") }}
+                                {% if form.tempo_meses.errors %}
+                                <ul class="errors">
+                                    {% for error in form.tempo_meses.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
                         </div>
-                    </fieldset>
-                </li>
-            </ul>
-            <div class="submit-button">
-                {{ form.submit }}
+                    </div>
+                </div>  
+                <div class="text-center">
+                    {{ form.submit(class_="btn btn-success bg-gradient btn-lg rounded") }}
+                </div>
             </div>
+            
+            
         </form>
     </div>
 {% endblock %}
