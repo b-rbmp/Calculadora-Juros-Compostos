@@ -7,7 +7,7 @@ from flask import Flask
 def init_app():
     # Inicializa a aplicação
     app = Flask(__name__, instance_relative_config=False)
-    app.config.from_object('config.DevConfig')
+    app.config.from_object('config.Config')
     
 
     # Inicializa Plugins

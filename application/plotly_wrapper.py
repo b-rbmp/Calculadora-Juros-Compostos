@@ -30,6 +30,8 @@ def create_plot_calculos(capital_vector):
             showline=True,
             showgrid=True,
             showticklabels=True,
+            zeroline=True,
+            zerolinecolor='rgb(204, 204, 204)',
             linecolor='rgb(204, 204, 204)',
             linewidth=2,
             ticks='outside',
@@ -47,6 +49,7 @@ def create_plot_calculos(capital_vector):
         yaxis=dict(
             showgrid=True,
             zeroline=True,
+            zerolinecolor='rgb(204, 204, 204)',
             showline=True,
             showticklabels=True,
             ticks='outside',
